@@ -1,0 +1,8 @@
+{
+  "name": "job-tracker",
+  "private": true,
+  "scripts": {
+    "dev:api": "pnpm --filter api start:dev",
+    "dev:web": "pnpm --filter web dev"
+  }
+}
