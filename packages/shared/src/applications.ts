@@ -35,3 +35,16 @@ export const listApplicationsQuerySchema = z.object({
   status: applicationStatusSchema.optional(),
 });
 export type ListApplicationsQuery = z.infer<typeof listApplicationsQuerySchema>;
+
+export interface Application {
+  id: string;
+  company: string;
+  position: string;
+  jobUrl: string | null;
+  source: string | null;
+  status: ApplicationStatus;
+  appliedAt: string;
+  notes: string | null;
+  createdAt: string;
+  updatedAt: string;
+}
