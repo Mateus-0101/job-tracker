@@ -2,6 +2,7 @@ import { useDraggable } from '@dnd-kit/core';
 import { APPLICATION_STATUSES } from '@job-tracker/shared';
 import type { Application, ApplicationStatus } from '@job-tracker/shared';
 import type { ReactNode } from 'react';
+import { AddReminder } from '../reminders/AddReminder';
 import { useDeleteApplication, useUpdateStatus } from './hooks';
 import { STATUS_LABELS } from './status';
 
@@ -9,12 +10,14 @@ interface ApplicationCardProps {
   application: Application;
   dragHandle?: ReactNode;
   actions?: ReactNode;
+  footer?: ReactNode;
 }
 
 export function ApplicationCard({
   application,
   dragHandle,
   actions,
+  footer,
 }: ApplicationCardProps) {
   return (
     <article className="card">
@@ -30,6 +33,7 @@ export function ApplicationCard({
         {dragHandle}
       </div>
       {actions && <div className="card-actions">{actions}</div>}
+      {footer && <div className="card-footer">{footer}</div>}
     </article>
   );
 }
@@ -81,6 +85,7 @@ export function DraggableCard({ application }: { application: Application }) {
             </button>
           </>
         }
+        footer={<AddReminder applicationId={application.id} />}
       />
     </div>
   );

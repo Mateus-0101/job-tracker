@@ -33,3 +33,17 @@ button:disabled { opacity: .6; cursor: default; }
 .user { display: flex; align-items: center; gap: .75rem; font-size: .9rem; }
 .login { max-width: 360px; margin: 6rem auto; text-align: center; padding: 0 1rem; }
 .login-button { display: inline-block; margin-top: 1rem; padding: .6rem 1.2rem; background: #2563eb; color: #fff; border-radius: 6px; text-decoration: none; }
+
+/* lembretes */
+.muted { color: #6b7280; font-size: .85rem; }
+.reminders { background: #fff; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; max-width: 560px; }
+.reminders h2 { font-size: 1rem; margin: 0 0 .75rem; }
+.reminders ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .5rem; }
+.reminder { display: flex; justify-content: space-between; gap: 1rem; padding: .6rem .75rem; border: 1px solid #e5e7eb; border-radius: 6px; }
+.reminder.overdue { border-color: #f1b0b0; background: #fdf2f2; }
+.reminder.overdue small { color: #b91c1c; font-weight: 600; }
+.reminder-actions { display: flex; gap: .5rem; align-items: flex-start; }
+.card-footer { margin-top: .5rem; }
+.link { background: transparent; border: none; color: #2563eb; padding: 0; font-size: .85rem; }
+.reminder-form { display: grid; gap: .4rem; }
+.reminder-form-actions { display: flex; gap: .5rem; }

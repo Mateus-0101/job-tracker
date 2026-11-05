@@ -2,6 +2,7 @@ import { ApplicationForm } from './features/applications/ApplicationForm';
 import { KanbanBoard } from './features/applications/KanbanBoard';
 import { useCurrentUser, useLogout } from './features/auth/hooks';
 import { LoginScreen } from './features/auth/LoginScreen';
+import { UpcomingReminders } from './features/reminders/UpcomingReminders';
 
 export default function App() {
   const { data: user, isPending, isError, error } = useCurrentUser();
@@ -21,6 +22,7 @@ export default function App() {
         </div>
       </header>
       <ApplicationForm />
+      <UpcomingReminders />
       <KanbanBoard />
     </main>
   );

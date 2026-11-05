@@ -58,6 +58,9 @@ export function useDeleteApplication() {
   return useMutation({
     mutationFn: (id: string) =>
       request<void>(`/applications/${id}`, { method: 'DELETE' }),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: KEY }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: KEY });
+      queryClient.invalidateQueries({ queryKey: ['reminders'] });
+    },
   });
 }

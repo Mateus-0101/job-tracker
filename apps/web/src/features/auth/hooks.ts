@@ -32,6 +32,7 @@ export function useLogout() {
     onSuccess: () => {
       queryClient.setQueryData(ME_KEY, null);
       queryClient.removeQueries({ queryKey: ['applications'] });
+      queryClient.removeQueries({ queryKey: ['reminders'] });
     },
   });
 }
