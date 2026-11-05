@@ -26,3 +26,10 @@ button:disabled { opacity: .6; cursor: default; }
 .overlay { cursor: grabbing; transform: rotate(2deg); box-shadow: 0 8px 20px rgba(0, 0, 0, .2); border-radius: 8px; }
 .handle { background: transparent; color: #6b7280; border: none; padding: 0 .25rem; cursor: grab; touch-action: none; align-self: flex-start; }
 .danger { background: transparent; color: #b91c1c; border-color: #e5b4b4; }
+
+/* autenticação */
+.topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.topbar h1 { margin: 0; }
+.user { display: flex; align-items: center; gap: .75rem; font-size: .9rem; }
+.login { max-width: 360px; margin: 6rem auto; text-align: center; padding: 0 1rem; }
+.login-button { display: inline-block; margin-top: 1rem; padding: .6rem 1.2rem; background: #2563eb; color: #fff; border-radius: 6px; text-decoration: none; }

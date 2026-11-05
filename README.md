@@ -30,6 +30,6 @@ O Postgres do Docker usa a porta **5433** no host, para não conflitar com um Po
 - [x] Estrutura do monorepo e banco de dados
 - [x] CRUD de candidaturas (API)
 - [x] Interface em React com Kanban
-- [ ] Autenticação com Google
+- [x] Autenticação com Google
 - [ ] Lembretes e notificações
 - [ ] Integração com Gmail

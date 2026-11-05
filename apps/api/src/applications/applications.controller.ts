@@ -8,6 +8,7 @@ import {
   Patch,
   Post,
   Query,
+  UseGuards,
 } from '@nestjs/common';
 import {
   createApplicationSchema,
@@ -21,54 +22,61 @@ import type {
   UpdateApplicationInput,
   UpdateStatusInput,
 } from '@job-tracker/shared';
+import { AuthGuard } from '../auth/auth.guard';
+import { CurrentUserId } from '../auth/current-user.decorator';
 import { ZodValidationPipe } from '../common/zod-validation.pipe';
 import { ApplicationsService } from './applications.service';
 
 @Controller('applications')
+@UseGuards(AuthGuard)
 export class ApplicationsController {
   constructor(private readonly applications: ApplicationsService) {}
 
   @Post()
   create(
+    @CurrentUserId() userId: string,
     @Body(new ZodValidationPipe(createApplicationSchema))
     body: CreateApplicationInput,
   ) {
-    return this.applications.create(body);
+    return this.applications.create(userId, body);
   }
 
   @Get()
   findAll(
+    @CurrentUserId() userId: string,
     @Query(new ZodValidationPipe(listApplicationsQuerySchema))
     query: ListApplicationsQuery,
   ) {
-    return this.applications.findAll(query);
+    return this.applications.findAll(userId, query);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.applications.findOne(id);
+  findOne(@CurrentUserId() userId: string, @Param('id') id: string) {
+    return this.applications.findOne(userId, id);
   }
 
   @Patch(':id')
   update(
+    @CurrentUserId() userId: string,
     @Param('id') id: string,
     @Body(new ZodValidationPipe(updateApplicationSchema))
     body: UpdateApplicationInput,
   ) {
-    return this.applications.update(id, body);
+    return this.applications.update(userId, id, body);
   }
 
   @Patch(':id/status')
   updateStatus(
+    @CurrentUserId() userId: string,
     @Param('id') id: string,
     @Body(new ZodValidationPipe(updateStatusSchema)) body: UpdateStatusInput,
   ) {
-    return this.applications.updateStatus(id, body.status);
+    return this.applications.updateStatus(userId, id, body.status);
   }
 
   @Delete(':id')
   @HttpCode(204)
-  remove(@Param('id') id: string) {
-    return this.applications.remove(id);
+  remove(@CurrentUserId() userId: string, @Param('id') id: string) {
+    return this.applications.remove(userId, id);
   }
 }
