@@ -5,4 +5,5 @@ allowBuilds:
   '@parcel/watcher': false
   '@prisma/engines': true
   esbuild: true
+  msgpackr-extract: true
   prisma: true

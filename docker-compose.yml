@@ -15,5 +15,18 @@ services:
       interval: 5s
       retries: 5
 
+  redis:
+    image: redis:7
+    restart: unless-stopped
+    ports:
+      - "6380:6379"
+
+  mailpit:
+    image: axllent/mailpit
+    restart: unless-stopped
+    ports:
+      - "1025:1025"   # SMTP
+      - "8025:8025"   # interface web
+
 volumes:
   pgdata:

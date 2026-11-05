@@ -45,14 +45,15 @@ model Application {
 }
 
 model Reminder {
-  id            String   @id @default(uuid())
+  id            String    @id @default(uuid())
   applicationId String
   title         String
   dueAt         DateTime
-  done          Boolean  @default(false)
-  createdAt     DateTime @default(now())
+  done          Boolean   @default(false)
+  notifiedAt    DateTime?
+  createdAt     DateTime  @default(now())
 
   application Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
 
-  @@index([dueAt, done])
+  @@index([done, notifiedAt, dueAt])
 }
