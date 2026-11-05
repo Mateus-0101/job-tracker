@@ -35,7 +35,21 @@ export function useUpdateStatus() {
         method: 'PATCH',
         body: JSON.stringify({ status }),
       }),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: KEY }),
+    // atualiza a tela antes da resposta da API
+    onMutate: async ({ id, status }) => {
+      await queryClient.cancelQueries({ queryKey: KEY });
+      const previous = queryClient.getQueryData<Application[]>(KEY);
+      queryClient.setQueryData<Application[]>(KEY, (old) =>
+        old?.map((a) => (a.id === id ? { ...a, status } : a)),
+      );
+      return { previous };
+    },
+    // se a API falhar, volta ao estado anterior
+    onError: (_error, _variables, context) => {
+      if (context?.previous) queryClient.setQueryData(KEY, context.previous);
+    },
+    // no fim, sincroniza com o que está de fato no servidor
+    onSettled: () => queryClient.invalidateQueries({ queryKey: KEY }),
   });
 }
 

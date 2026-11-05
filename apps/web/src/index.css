@@ -1,11 +1,28 @@
 body { font-family: system-ui, sans-serif; margin: 0; background: #f6f7f9; color: #1c1e21; }
-.container { max-width: 720px; margin: 0 auto; padding: 2rem 1rem; }
-.form { display: grid; gap: .75rem; background: #fff; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; }
+.container { max-width: 1400px; margin: 0 auto; padding: 2rem 1rem; }
+
+/* formulário */
+.form { display: grid; gap: .75rem; background: #fff; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; max-width: 560px; }
 .form label { display: grid; gap: .25rem; font-size: .9rem; }
 input, select, button { padding: .5rem; border: 1px solid #ccd0d5; border-radius: 6px; font: inherit; }
 button { cursor: pointer; background: #2563eb; color: #fff; border-color: #2563eb; }
 button:disabled { opacity: .6; cursor: default; }
-.list { list-style: none; padding: 0; display: grid; gap: .75rem; }
-.card { display: flex; justify-content: space-between; align-items: center; gap: 1rem; background: #fff; padding: 1rem; border-radius: 8px; }
-.actions { display: flex; gap: .5rem; }
 .error { color: #b91c1c; font-size: .85rem; }
+
+/* kanban */
+.board { display: flex; gap: 1rem; overflow-x: auto; padding-bottom: 1rem; align-items: flex-start; }
+.column { flex: 0 0 260px; background: #e9ecf1; border-radius: 8px; padding: .75rem; min-height: 140px; transition: background .15s; }
+.column-over { background: #dbe6fb; }
+.column-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: .75rem; }
+.column-header h2 { font-size: .9rem; margin: 0; }
+.count { background: #fff; border-radius: 999px; padding: .1rem .5rem; font-size: .8rem; }
+.column-body { display: grid; gap: .5rem; }
+
+.card { background: #fff; padding: .75rem; border-radius: 8px; box-shadow: 0 1px 2px rgba(0, 0, 0, .08); }
+.card-top { display: flex; justify-content: space-between; gap: .5rem; }
+.card-actions { display: flex; gap: .5rem; margin-top: .5rem; }
+.card-actions select { flex: 1; min-width: 0; }
+.dragging { opacity: .4; }
+.overlay { cursor: grabbing; transform: rotate(2deg); box-shadow: 0 8px 20px rgba(0, 0, 0, .2); border-radius: 8px; }
+.handle { background: transparent; color: #6b7280; border: none; padding: 0 .25rem; cursor: grab; touch-action: none; align-self: flex-start; }
+.danger { background: transparent; color: #b91c1c; border-color: #e5b4b4; }

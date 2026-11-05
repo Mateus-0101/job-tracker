@@ -1,12 +1,12 @@
 import { ApplicationForm } from './features/applications/ApplicationForm';
-import { ApplicationList } from './features/applications/ApplicationList';
+import { KanbanBoard } from './features/applications/KanbanBoard';
 
 export default function App() {
   return (
     <main className="container">
       <h1>Job Tracker</h1>
       <ApplicationForm />
-      <ApplicationList />
+      <KanbanBoard />
     </main>
   );
 }
